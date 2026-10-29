@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Traps/Spinner.gd" id="1_ldpts"]
+[ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/column.glb" id="2_y44qc"]
+[ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/cylinder_hazard.glb" id="3_3i8e2"]
+[ext_resource type="Script" path="res://Scripts/Traps/Hazard.gd" id="4_eoc64"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6fqw"]
+size = Vector3(3.9, 0.75, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qv0yk"]
+size = Vector3(3.9, 0.75, 0.75)
+
+[node name="Spinner" type="Node3D" unique_id=311936813]
+script = ExtResource("1_ldpts")
+degrees_per_second = 70.0
+rotate_child = "Rotor"
+
+[node name="Post" type="Node3D" parent="." unique_id=897396403 instance=ExtResource("2_y44qc")]
+transform = Transform3D(0.27503178, 0, 0, 0, 0.39290255, 0, 0, 0, 0.27503178, 0, 0, 0)
+
+[node name="Rotor" type="Node3D" parent="." unique_id=1315829474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+
+[node name="ArmL" type="Node3D" parent="Rotor" unique_id=1544249011 instance=ExtResource("3_3i8e2")]
+transform = Transform3D(-1.487186e-08, -1.0309955, 0, 0.3402285, -4.5066244e-08, 0, 0, 0, 0.3402285, -0.35, 0, 0)
+
+[node name="HazardL" type="Area3D" parent="Rotor" unique_id=467091869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35, 0, 0)
+script = ExtResource("4_eoc64")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotor/HazardL" unique_id=1018271624]
+shape = SubResource("BoxShape3D_p6fqw")
+
+[node name="ArmR" type="Node3D" parent="Rotor" unique_id=687970354 instance=ExtResource("3_3i8e2")]
+transform = Transform3D(-1.487186e-08, 1.0309955, 0, -0.3402285, -4.5066244e-08, 0, 0, 0, 0.3402285, 0.35, 0, 0)
+
+[node name="HazardR" type="Area3D" parent="Rotor" unique_id=978786139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35, 0, 0)
+script = ExtResource("4_eoc64")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotor/HazardR" unique_id=1043889376]
+shape = SubResource("BoxShape3D_qv0yk")

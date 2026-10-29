@@ -1,0 +1,50 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Coin.gd" id="1_1aiph"]
+[ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/gem_pink.glb" id="2_g55n1"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/particle.png" id="3_7rnio"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dj6y8"]
+radius = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdnch"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_7rnio")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_x546c"]
+material = SubResource("StandardMaterial3D_qdnch")
+size = Vector2(0.15, 0.15)
+
+[sub_resource type="Curve" id="Curve_f702d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cn1m1"]
+radius = 2.4
+
+[node name="Gem" type="Area3D" unique_id=138949532]
+script = ExtResource("1_1aiph")
+
+[node name="GemModel" type="Node3D" parent="." unique_id=1013829504 instance=ExtResource("2_g55n1")]
+transform = Transform3D(1.3101141, 0, 0, 0, 1.3101141, 0, 0, 0, 1.3101141, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1313509916]
+shape = SubResource("SphereShape3D_dj6y8")
+
+[node name="Sparkles" type="CPUParticles3D" parent="." unique_id=1469738552]
+amount = 10
+mesh = SubResource("QuadMesh_x546c")
+emission_shape = 1
+emission_sphere_radius = 0.6
+gravity = Vector3(0, 0.6, 0)
+initial_velocity_max = 0.4
+scale_amount_curve = SubResource("Curve_f702d")
+color = Color(1, 0.55, 0.7, 1)
+
+[node name="Range" type="Area3D" parent="." unique_id=1801954378]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Range" unique_id=1124710209]
+shape = SubResource("SphereShape3D_cn1m1")

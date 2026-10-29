@@ -1,0 +1,64 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Door.gd" id="1_tjn54"]
+[ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/arch.glb" id="2_cueag"]
+[ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/arch_door.glb" id="3_eeyub"]
+[ext_resource type="Shader" path="res://Assets/Shaders/portal.gdshader" id="4_u5gfg"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/Kanit-Bold.ttf" id="5_cox0g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qtt8b"]
+size = Vector3(2.4, 3, 2.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_du643"]
+render_priority = 0
+shader = ExtResource("4_u5gfg")
+shader_parameter/color_a = null
+shader_parameter/color_b = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_gbgf1"]
+material = SubResource("ShaderMaterial_du643")
+size = Vector2(2.4, 2.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0stla"]
+size = Vector3(2.6, 3.4, 0.5)
+
+[node name="Door" type="Area3D" unique_id=1705486237]
+script = ExtResource("1_tjn54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1131987572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.6)
+shape = SubResource("BoxShape3D_qtt8b")
+
+[node name="Arch" type="Node3D" parent="." unique_id=1645727806 instance=ExtResource("2_cueag")]
+transform = Transform3D(1.1471119, 0, 0, 0, 1.1471119, 0, 0, 0, 1.1471119, 0, 0, 0)
+
+[node name="DoorPivot" type="Node3D" parent="." unique_id=1119886300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0.05)
+
+[node name="ArchDoor" type="Node3D" parent="DoorPivot" unique_id=127485610 instance=ExtResource("3_eeyub")]
+transform = Transform3D(0.99128, 0, 0, 0, 1.0344676, 0, 0, 0, 1.0344676, 1.2, 0, 0)
+
+[node name="Portal" type="MeshInstance3D" parent="." unique_id=1197976802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -0.1)
+mesh = SubResource("QuadMesh_gbgf1")
+
+[node name="Light" type="OmniLight3D" parent="." unique_id=1023515595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 1.6)
+light_energy = 1.5
+omni_range = 7.0
+
+[node name="Sign" type="Label3D" parent="." unique_id=1610440092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.6, 0.3)
+pixel_size = 0.012
+billboard = 1
+outline_modulate = Color(0.2, 0.08, 0.04, 1)
+text = "ประตูล็อก"
+font = ExtResource("5_cox0g")
+font_size = 56
+outline_size = 14
+
+[node name="Blocker" type="StaticBody3D" parent="." unique_id=251095167]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker" unique_id=918222790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+shape = SubResource("BoxShape3D_0stla")

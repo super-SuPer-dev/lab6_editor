@@ -1,0 +1,71 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://Scripts/Checkpoint.gd" id="1_u2dfq"]
+[ext_resource type="Material" path="res://Assets/Materials/lowpoly_vertex_color.tres" id="2_kq68e"]
+[ext_resource type="PackedScene" path="res://Assets/Models/flag.glb" id="3_aby1t"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/particle.png" id="4_spvtf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i43yy"]
+size = Vector3(2.4, 3, 2.4)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tjv4q"]
+_surfaces = [{
+"aabb": AABB(-0.91484785, -0.275, -0.9383926, 1.848603, 0.395, 1.8196368),
+"attribute_data": PackedByteArray("mpSL/5qUi/+alIv/oJuQ/6CbkP+gm5D/mZSL/5mUi/+ZlIv/pJ6T/6Sek/+knpP/mJOK/5iTiv+Yk4r/n5qQ/5+akP+fmpD/nZiO/52Yjv+dmI7/bWVh/21lYf9tZWH/bWVh/21lYf9tZWH/c2xm/3NsZv9zbGb/c2xm/3NsZv9zbGb/dG1n/3RtZ/90bWf/dG1n/3RtZ/90bWf/enJr/3pya/96cmv/enJr/3pya/96cmv/dm5o/3ZuaP92bmj/dm5o/3ZuaP92bmj/bmdi/25nYv9uZ2L/bmdi/25nYv9uZ2L/cGlk/3BpZP9waWT/cGlk/3BpZP9waWT/cWll/3FpZf9xaWX/cWll/3FpZf9xaWX/dm5o/3ZuaP92bmj/dm5o/3ZuaP92bmj/dW1o/3VtaP91bWj/dW1o/3VtaP91bWj/c2tm/3NrZv9za2b/c2tm/3NrZv9za2b/bWZi/21mYv9tZmL/bWZi/21mYv9tZmL/c2xm/3NsZv9zbGb/c2xm/3NsZv9zbGb/bGRg/2xkYP9sZGD/bGRg/2xkYP9sZGD/ZV9a/2VfWv9lX1r/Y11Y/2NdWP9jXVj/X1hV/19YVf9fWFX/YltX/2JbV/9iW1f/Y11Y/2NdWP9jXVj/YVtX/2FbV/9hW1f/XlhU/15YVP9eWFT/"),
+"format": 34359738383,
+"material": ExtResource("2_kq68e"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 126,
+"vertex_data": PackedByteArray("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")
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_it24l"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_spvtf")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_yiu13"]
+material = SubResource("StandardMaterial3D_it24l")
+size = Vector2(0.15, 0.15)
+
+[sub_resource type="Curve" id="Curve_0njp3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Checkpoint" type="Area3D" unique_id=1254615758]
+script = ExtResource("1_u2dfq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1406363952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_i43yy")
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=1677731260]
+mesh = SubResource("ArrayMesh_tjv4q")
+
+[node name="Flag" type="Node3D" parent="." unique_id=1687216598 instance=ExtResource("3_aby1t")]
+transform = Transform3D(2.1052632, 0, 0, 0, 2.1052632, 0, 0, 0, 2.1052632, 0, 0.1, 0)
+
+[node name="Light" type="OmniLight3D" parent="." unique_id=702629343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.6)
+light_color = Color(0.5, 1, 0.55, 1)
+light_energy = 1.4
+
+[node name="Burst" type="CPUParticles3D" parent="." unique_id=249414456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 0.9
+mesh = SubResource("QuadMesh_yiu13")
+emission_shape = 1
+emission_sphere_radius = 0.6
+gravity = Vector3(0, -3, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_amount_min = 2.0
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_0njp3")
+color = Color(0.7, 1, 0.5, 1)

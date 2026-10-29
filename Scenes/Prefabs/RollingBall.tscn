@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Traps/Mover.gd" id="1_7bsjb"]
+[ext_resource type="Script" path="res://Scripts/Traps/Spinner.gd" id="2_qo01e"]
+[ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/spiky_ball.glb" id="3_ufcma"]
+[ext_resource type="Script" path="res://Scripts/Traps/Hazard.gd" id="4_dhxbe"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uxqcn"]
+radius = 0.7
+
+[node name="RollingBall" type="Node3D" unique_id=286490912]
+script = ExtResource("1_7bsjb")
+
+[node name="Roll" type="Node3D" parent="." unique_id=451073955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+script = ExtResource("2_qo01e")
+axis = Vector3(0, 0, 1)
+degrees_per_second = -220.0
+
+[node name="SpikyBall" type="Node3D" parent="Roll" unique_id=617975652 instance=ExtResource("3_ufcma")]
+transform = Transform3D(1.2600756, 0, 0, 0, 1.2600756, 0, 0, 0, 1.2600756, 0, 0, 0)
+
+[node name="Hazard" type="Area3D" parent="." unique_id=1974917853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+script = ExtResource("4_dhxbe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazard" unique_id=1382027771]
+shape = SubResource("SphereShape3D_uxqcn")

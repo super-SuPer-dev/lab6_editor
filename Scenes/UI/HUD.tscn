@@ -1,0 +1,159 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/GameUI.gd" id="1_4bm6u"]
+[ext_resource type="Script" path="res://Scripts/UI/GemIcon.gd" id="2_ykvyr"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/Kanit-Bold.ttf" id="3_lelo4"]
+[ext_resource type="Script" path="res://Scripts/UI/HeartBar.gd" id="4_1ree7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d2sja"]
+font = ExtResource("3_lelo4")
+font_size = 40
+font_color = Color(1, 0.95, 0.8, 1)
+outline_size = 10
+outline_color = Color(0.25, 0.11, 0.05, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_offset = Vector2(2, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i4i0y"]
+font = ExtResource("3_lelo4")
+font_size = 34
+font_color = Color(1, 0.95, 0.8, 1)
+outline_size = 10
+outline_color = Color(0.25, 0.11, 0.05, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_offset = Vector2(2, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yenib"]
+font = ExtResource("3_lelo4")
+font_size = 72
+font_color = Color(1, 0.82, 0.35, 1)
+outline_size = 16
+outline_color = Color(0.25, 0.11, 0.05, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_offset = Vector2(2, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pydgx"]
+font = ExtResource("3_lelo4")
+font_size = 32
+font_color = Color(1, 0.96, 0.88, 1)
+outline_size = 10
+outline_color = Color(0.25, 0.11, 0.05, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_offset = Vector2(2, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eebq5"]
+font = ExtResource("3_lelo4")
+font_size = 38
+outline_size = 10
+outline_color = Color(0.25, 0.11, 0.05, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_offset = Vector2(2, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_18ujm"]
+font = ExtResource("3_lelo4")
+font_size = 20
+font_color = Color(1, 1, 1, 0.9)
+outline_size = 6
+outline_color = Color(0.25, 0.11, 0.05, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_offset = Vector2(2, 3)
+
+[node name="GameUI" type="Control" unique_id=74704651]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_4bm6u")
+
+[node name="TopBar" type="HBoxContainer" parent="." unique_id=556331231]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 18.0
+offset_right = 26.0
+offset_bottom = 18.0
+theme_override_constants/separation = 12
+
+[node name="GemIcon" type="Control" parent="TopBar" unique_id=459420818]
+custom_minimum_size = Vector2(40, 48)
+layout_mode = 2
+script = ExtResource("2_ykvyr")
+
+[node name="CoinsLabel" type="Label" parent="TopBar" unique_id=1768479886]
+layout_mode = 2
+text = "0 / 0"
+label_settings = SubResource("LabelSettings_d2sja")
+
+[node name="Spacer" type="Control" parent="TopBar" unique_id=1416435131]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+
+[node name="Hearts" type="Control" parent="TopBar" unique_id=434744081]
+custom_minimum_size = Vector2(130, 40)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("4_1ree7")
+
+[node name="TimeLabel" type="Label" parent="." unique_id=1115163311]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 20.0
+offset_right = -26.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_i4i0y")
+horizontal_alignment = 2
+
+[node name="Banner" type="VBoxContainer" parent="." unique_id=465045393]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -560.0
+offset_top = 120.0
+offset_right = 560.0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Banner" unique_id=93029927]
+layout_mode = 2
+text = "ด่าน"
+label_settings = SubResource("LabelSettings_yenib")
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Banner" unique_id=1786847642]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_pydgx")
+horizontal_alignment = 1
+
+[node name="Toast" type="Label" parent="." unique_id=1445288011]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = 90.0
+offset_right = 560.0
+offset_bottom = 150.0
+label_settings = SubResource("LabelSettings_eebq5")
+horizontal_alignment = 1
+
+[node name="Help" type="Label" parent="." unique_id=908187738]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -44.0
+offset_right = 640.0
+offset_bottom = -12.0
+text = "WASD / ลูกศร = เดิน    Space = กระโดด (กดซ้ำกลางอากาศ = ตีลังกา)    F = โจมตี    K = เตะ    Shift = กลิ้งหลบ    เมาส์ = หมุนกล้อง    Esc = ปลดเมาส์"
+label_settings = SubResource("LabelSettings_18ujm")
+horizontal_alignment = 1

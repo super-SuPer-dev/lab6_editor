@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/torch.glb" id="1_8ekt7"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/particle.png" id="2_biq30"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sc378"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_biq30")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_536kr"]
+material = SubResource("StandardMaterial3D_sc378")
+size = Vector2(0.15, 0.15)
+
+[sub_resource type="Curve" id="Curve_u8jvb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Torch" type="Node3D" unique_id=752604587]
+
+[node name="TorchModel" type="Node3D" parent="." unique_id=1917858 instance=ExtResource("1_8ekt7")]
+transform = Transform3D(1.6512433, 0, 0, 0, 1.6512433, 0, 0, 0, 1.6512433, 0, 0, 0)
+
+[node name="Light" type="OmniLight3D" parent="." unique_id=1819757071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+light_color = Color(1, 0.55, 0.2, 1)
+light_energy = 1.6
+omni_range = 7.0
+
+[node name="Flame" type="CPUParticles3D" parent="." unique_id=1392914377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, 0)
+amount = 12
+lifetime = 0.7
+mesh = SubResource("QuadMesh_536kr")
+emission_shape = 1
+emission_sphere_radius = 0.12
+gravity = Vector3(0, 2.5, 0)
+initial_velocity_max = 0.4
+scale_amount_min = 1.5
+scale_amount_max = 2.2
+scale_amount_curve = SubResource("Curve_u8jvb")
+color = Color(1, 0.6, 0.15, 1)

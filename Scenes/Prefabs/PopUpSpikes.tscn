@@ -1,0 +1,40 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://Scripts/Traps/PopUpSpikes.gd" id="1_k2oej"]
+[ext_resource type="Material" path="res://Assets/Materials/lowpoly_vertex_color.tres" id="2_axq67"]
+[ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/spike_platform.glb" id="3_ndx58"]
+[ext_resource type="Script" path="res://Scripts/Traps/Hazard.gd" id="4_sjvsr"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6mvfi"]
+_surfaces = [{
+"aabb": AABB(-0.95, -0.05, -0.95, 1.9, 0.05, 1.9),
+"attribute_data": PackedByteArray("KhsW/yobFv8qGxb/KhsW/yobFv8qGxb/IhYT/yIWE/8iFhP/IhYT/yIWE/8iFhP/LR4Z/y0eGf8tHhn/LR4Z/y0eGf8tHhn/LR4Z/y0eGf8tHhn/LR4Z/y0eGf8tHhn/KhwX/yocF/8qHBf/KhwX/yocF/8qHBf/KhwX/yocF/8qHBf/KhwX/yocF/8qHBf/"),
+"format": 34359738383,
+"material": ExtResource("2_axq67"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("MzNzvwAAAAAzM3O/MzNzPwAAAAAzM3O/MzNzPwAAAAAzM3M/MzNzvwAAAAAzM3O/MzNzPwAAAAAzM3M/MzNzvwAAAAAzM3M/MzNzv83MTL0zM3O/MzNzP83MTL0zM3M/MzNzP83MTL0zM3O/MzNzv83MTL0zM3O/MzNzv83MTL0zM3M/MzNzP83MTL0zM3M/MzNzv83MTL0zM3M/MzNzPwAAAAAzM3M/MzNzP83MTL0zM3M/MzNzv83MTL0zM3M/MzNzvwAAAAAzM3M/MzNzPwAAAAAzM3M/MzNzv83MTL0zM3O/MzNzP83MTL0zM3O/MzNzPwAAAAAzM3O/MzNzv83MTL0zM3O/MzNzPwAAAAAzM3O/MzNzvwAAAAAzM3O/MzNzP83MTL0zM3O/MzNzP83MTL0zM3M/MzNzPwAAAAAzM3M/MzNzP83MTL0zM3O/MzNzPwAAAAAzM3M/MzNzPwAAAAAzM3O/MzNzv83MTL0zM3O/MzNzvwAAAAAzM3M/MzNzv83MTL0zM3M/MzNzv83MTL0zM3O/MzNzvwAAAAAzM3O/MzNzvwAAAAAzM3M//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/")
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4y5f5"]
+size = Vector3(1.6, 0.9, 1.6)
+
+[node name="PopUpSpikes" type="Node3D" unique_id=747556619]
+script = ExtResource("1_k2oej")
+
+[node name="Hole" type="MeshInstance3D" parent="." unique_id=456477424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
+mesh = SubResource("ArrayMesh_6mvfi")
+
+[node name="Spikes" type="Node3D" parent="." unique_id=2131926661]
+
+[node name="SpikePlatform" type="Node3D" parent="Spikes" unique_id=1516601564 instance=ExtResource("3_ndx58")]
+transform = Transform3D(1.0736947, 0, 0, 0, 1.0225664, 0, 0, 0, 1.0736947, 0, 0, 0)
+
+[node name="Hazard" type="Area3D" parent="Spikes" unique_id=83475886]
+script = ExtResource("4_sjvsr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Hazard" unique_id=513513846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_4y5f5")

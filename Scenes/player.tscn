@@ -1,0 +1,59 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_x3wgy"]
+[ext_resource type="PackedScene" path="res://Assets/Character/student_character.glb" id="2_3smsa"]
+[ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="4_f1ek2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
+radius = 0.32
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02pkc"]
+diffuse_mode = 2
+specular_mode = 2
+metallic_specular = 0.0
+
+[sub_resource type="Curve" id="Curve_ooin1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.236318, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Player" type="CharacterBody3D" unique_id=827916919 groups=["Player"]]
+floor_snap_length = 0.3
+script = ExtResource("1_x3wgy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1317746730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_vgqql")
+
+[node name="Model" type="Node3D" parent="." unique_id=1293588333 instance=ExtResource("2_3smsa")]
+transform = Transform3D(-0.78, 0, -6.8189766e-08, 0, 0.78, 0, 6.8189766e-08, 0, -0.78, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=197559296]
+root_node = NodePath("../Model")
+
+[node name="Gimbal" type="Node3D" parent="." unique_id=60057899]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("4_f1ek2")
+
+[node name="Camera3D" type="Camera3D" parent="Gimbal" unique_id=1711835119]
+transform = Transform3D(1, 0, 0, 0, 0.97029585, 0.24192193, 0, -0.24192193, 0.97029585, 0, 2.4, 6.2)
+current = true
+fov = 70.0
+far = 900.0
+
+[node name="CameraControlTimer" type="Timer" parent="Gimbal" unique_id=1451020060]
+wait_time = 2.0
+
+[node name="ParticleTrail" type="CPUParticles3D" parent="." unique_id=275910122]
+material_override = SubResource("StandardMaterial3D_02pkc")
+amount = 30
+emission_shape = 1
+emission_sphere_radius = 0.2
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.1, 0)
+scale_amount_min = 0.75
+scale_amount_curve = SubResource("Curve_ooin1")
+
+[connection signal="timeout" from="Gimbal/CameraControlTimer" to="Gimbal" method="_on_camera_control_timer_timeout"]
