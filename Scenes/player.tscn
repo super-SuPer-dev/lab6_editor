@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_x3wgy"]
-[ext_resource type="PackedScene" path="res://Assets/Character/student_character.glb" id="2_3smsa"]
+[ext_resource type="PackedScene" path="res://Assets/Character/student_character_rigged.fbx" id="2_3smsa"]
 [ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="4_f1ek2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]

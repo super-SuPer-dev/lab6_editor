@@ -15,7 +15,8 @@ func _initialize():
 	gimbal.set("auto_rotate", false)
 	gimbal.get_node("CameraControlTimer").stop()
 	gimbal.position = p.position
-	p.get_node("Model").rotation.y = deg_to_rad(v[3] + 180.0)
+	# optional 5th value: face the camera instead of walking away from it
+	p.get_node("Model").rotation.y = deg_to_rad(v[3] + (35.0 if v.size() > 4 else 180.0))
 	for k in 40: await process_frame
 	var steps := [["idle", "", 5], ["run", "move_forward", 24], ["attack", "attack", 20], ["combo", "attack", 22],
 		["kick", "kick", 16], ["dodge", "dodge", 14], ["jump", "jump", 14]]
@@ -23,7 +24,7 @@ func _initialize():
 		if s[1] != "":
 			Input.action_press(s[1])
 			await process_frame
-			if s[1] != "move_forward":
+			if s[1] != "move_forward" or v.size() > 4:
 				Input.action_release(s[1])
 		for k in s[2]: await process_frame
 		var anim: AnimationPlayer = p.get_node("AnimationPlayer")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Demo/player.gd" id="1_player"]
-[ext_resource type="PackedScene" path="res://Assets/Character/student_character.glb" id="2_model"]
+[ext_resource type="PackedScene" path="res://Assets/Character/student_character_rigged.fbx" id="2_model"]
 [ext_resource type="Script" path="res://Scripts/Demo/camera_pivot.gd" id="3_cam"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]

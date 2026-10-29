@@ -9,14 +9,18 @@
 จาก Melee และ Shooter library (กดปุ่ม "ดูท่าทางตัวละครทั้งหมด" ที่หน้าแรก)
 
 ![gameplay](docs/screenshots/lab6/gameplay.png)
+![godot editor](docs/screenshots/lab6/godot_editor.png)
 
 ## ขั้นตอนที่ทำ
 
 1. **Blender 4.5:** สร้างตัวละครชุดนักศึกษา ใช้ภาพใบหน้าตนเองเป็น texture บนหัว (`blender_source/`)
    - `build_character.py` สร้างโมเดล, Armature และ export `.glb` (กระดูกตั้งชื่อแบบ Mixamo: `mixamorig_Hips`, `mixamorig_Spine` …)
    - `export_mixamo_fbx.py` export เฉพาะ mesh + texture เป็น FBX สำหรับอัปโหลดเข้า Mixamo auto-rigger
-2. **Mixamo:** อัปโหลด FBX เพื่อทำ auto-rig โครงกระดูกมาตรฐาน Mixamo
-3. **Godot 4.7:** import ตัวละครแล้วตั้ง Retarget ด้วย `Mixamo BoneMap.tres`
+2. **Mixamo:** อัปโหลด FBX เพื่อทำ auto-rig แล้วดาวน์โหลดกลับมาเป็น `Assets/Character/student_character_rigged.fbx`
+   (FBX Binary, T-pose, โครงกระดูก Mixamo 41 กระดูก) ตัวนี้คือโมเดลที่ใช้ในเกม
+
+   ![mixamo](docs/screenshots/lab6/mixamo_autorig.png)
+3. **Godot 4.7:** import FBX จาก Mixamo แล้วตั้ง Retarget ด้วย `Mixamo BoneMap.tres`
    (โครงกระดูกถูกเปลี่ยนเป็น `GeneralSkeleton`) จากนั้นใส่ Animation Library จาก
    [Godot4-OpenAnimationLibraries](https://github.com/catprisbrey/Godot4-OpenAnimationLibraries)
    ทั้ง `MeleeLib.res` และ `ShooterLib.res`
@@ -49,7 +53,7 @@
 
 ## โครงสร้างโปรเจกต์
 
-- `Assets/Character/` ตัวละครนักศึกษา (`.glb` + texture ใบหน้า, import ด้วย Mixamo bone map)
+- `Assets/Character/` ตัวละครนักศึกษา: `student_character_rigged.fbx` (rig จาก Mixamo, ใช้ในเกม) และ `student_character.glb` (rig ที่ทำเองใน Blender รุ่นแรก) import ด้วย Mixamo bone map
 - `Assets/Animations/` `MeleeLib.res`, `ShooterLib.res`, `mixamo_bone_map.tres`
 - `Scenes/player.tscn`, `Scripts/player.gd` Player ของเกม (controller จาก 3D Platformer Starter Kit + ท่าโจมตี/กลิ้ง)
 - `Scenes/Demo/CharacterDemo.tscn` ฉากเดโมเลือกดูทุกท่า (220 ท่า)

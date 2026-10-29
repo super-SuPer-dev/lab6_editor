@@ -8,7 +8,7 @@ func _init():
 			var a := lib.get_animation(n)
 			out.append("%s(%.2f%s)" % [n, a.length, "L" if a.loop_mode != Animation.LOOP_NONE else ""])
 		print(p, ": ", ", ".join(out))
-	var m: Node3D = load("res://Assets/Character/student_character.glb").instantiate()
+	var m: Node3D = load("res://Assets/Character/student_character_rigged.fbx").instantiate()
 	root.add_child(m)
 	var sk: Skeleton3D = m.find_child("GeneralSkeleton", true, false)
 	print("skeleton: ", sk, " bones=", sk.get_bone_count() if sk else 0)

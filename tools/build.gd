@@ -285,7 +285,7 @@ func load_fresh_res(path: String) -> Resource:
 
 # Lab 6: student character; its clips are added at runtime by CharacterAnims.setup()
 func hero_with_anims(root: Node3D):
-	var m := model("res://Assets/Character/student_character.glb", 1.0)
+	var m := model("res://Assets/Character/student_character_rigged.fbx", 1.0)
 	m.scale = Vector3.ONE * 0.78  # 1.92 m model -> ~1.5 m, the size the levels were built for
 	m.name = "Model"
 	root.add_child(m)

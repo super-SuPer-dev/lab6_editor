@@ -24,7 +24,7 @@ func _initialize():
 		holder.position = Vector3((i - (n - 1) / 2.0) * 1.6, 0, 0)
 		holder.rotation_degrees.y = 25
 		root.add_child(holder)
-		var m: Node3D = load("res://Assets/Character/student_character.glb").instantiate()
+		var m: Node3D = load("res://Assets/Character/student_character_rigged.fbx").instantiate()
 		holder.add_child(m)
 		var ap: AnimationPlayer = m.get_node("AnimationPlayer")
 		CharacterAnims.setup(ap, m)

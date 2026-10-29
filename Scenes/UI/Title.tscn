@@ -1,7 +1,7 @@
 [gd_scene format=4]
 
 [ext_resource type="Material" path="res://Assets/Materials/lowpoly_vertex_color.tres" id="1_0oclb"]
-[ext_resource type="PackedScene" path="res://Assets/Character/student_character.glb" id="2_178wh"]
+[ext_resource type="PackedScene" path="res://Assets/Character/student_character_rigged.fbx" id="2_178wh"]
 [ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/palm_tree.glb" id="4_edfne"]
 [ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/cactus_flowers.glb" id="5_dvr26"]
 [ext_resource type="PackedScene" path="res://Assets/Models/PolyPizza/cactus.glb" id="6_fa1pr"]
